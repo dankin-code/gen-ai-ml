@@ -1,5 +1,3 @@
-# BUSINESS SCIENCE UNIVERSITY
-# PYTHON FOR GENERATIVE AI COURSE
 # RETRIEVAL-AUGMENTED GENERATION (RAG)
 # ***
 
@@ -34,7 +32,7 @@ load_dotenv()
 
 
 # Key Parameters
-VECTOR_DATABASE = "data/products_vectorstore.db"
+VECTOR_DATABASE = "./02 RAG Web Scraping/data/products_vectorstore.db"
 EMBEDDING_MODEL = "text-embedding-ada-002"
 LLM_MODEL       = "gpt-4o-mini"
 
