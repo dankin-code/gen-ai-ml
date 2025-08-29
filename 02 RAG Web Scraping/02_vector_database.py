@@ -1,7 +1,4 @@
-# BUSINESS SCIENCE UNIVERSITY
-# PYTHON FOR GENERATIVE AI COURSE
 # RETRIEVAL-AUGMENTED GENERATION (RAG)
-# ***
 
 # How to inject our LLM's with knowledge: RAG Part 1
 
@@ -19,14 +16,16 @@ from langchain_openai import OpenAIEmbeddings
 import re
 import copy
 import joblib
-import yaml
-import os
 
 from pprint import pprint
+import os
+from dotenv import load_dotenv
+
+
+load_dotenv()
 
 # OPENAI API SETUP
-
-os.environ['OPENAI_API_KEY'] = yaml.safe_load(open('../credentials.yml'))['openai']
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 # Resource: https://platform.openai.com/docs/models/text-embedding-ada-002
 MODEL_EMBEDDING = 'text-embedding-ada-002' # OpenAI Text Embedding Model that works the best in my experience
@@ -34,7 +33,7 @@ MODEL_EMBEDDING = 'text-embedding-ada-002' # OpenAI Text Embedding Model that wo
 # * 1.0 DATA PREPARATION ----
 
 # Load the documents
-documents = joblib.load("data/products.pkl")
+documents = joblib.load("./02 RAG Web Scraping/data/products.pkl")
 
 documents
 
@@ -123,9 +122,7 @@ pprint(documents_with_metadata[0].page_content)
 
 
 # NOTE: The embedding model selected needs to be used every time you access the Vector Store
-embedding_function = OpenAIEmbeddings(
-    model=MODEL_EMBEDDING,
-)
+embedding_function = OpenAIEmbeddings(model=MODEL_EMBEDDING,)
 
 embedding_function
 
@@ -142,7 +139,7 @@ embedding_function
 # Connect to the Vector Store (Run all other times)
 vectorstore = Chroma(
     embedding_function=embedding_function, 
-    persist_directory="data/products_vectorstore.db"
+    persist_directory="./02 RAG Web Scraping/data/products_vectorstore.db"
 )
 
 vectorstore

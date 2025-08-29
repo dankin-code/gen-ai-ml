@@ -24,9 +24,14 @@ from langchain_core.prompts import ChatPromptTemplate
 # Common
 import yaml
 import os
+from dotenv import load_dotenv
 
 from pprint import pprint
 from IPython.display import Markdown
+
+
+load_dotenv()
+
 
 # Key Parameters
 VECTOR_DATABASE = "data/products_vectorstore.db"
@@ -35,7 +40,7 @@ LLM_MODEL       = "gpt-4o-mini"
 
 # OPENAI_API_KEY
 
-os.environ['OPENAI_API_KEY'] = yaml.safe_load(open('../credentials.yml'))['openai']
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 # * 1.0 CREATE A RETRIEVER FROM THE VECTORSTORE 
 
