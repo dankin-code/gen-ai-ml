@@ -2,6 +2,12 @@ langchain
 langchain_community 
 langchain_openai 
 langchain_core
+langchain-chroma
+langgraph
 streamlit
 pypdf
 pandas
+chromadb
+flask
+beautifulsoup4
+nest_asyncio
